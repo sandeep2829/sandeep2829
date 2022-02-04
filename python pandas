@@ -1,0 +1,72 @@
+- 👋 Hi, I’m @sandeep2829
+- 👀 I’m interested in ...
+- 🌱 I’m currently learning ...
+- 💞️ I’m looking to collaborate on ...
+- 📫 How to reach me ...
+
+<!---
+sandeep2829/sandeep2829 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+You can click the Preview link to take a look at your changes.
+--->
+
+#python pandas
+
+class Panda:
+    def __init__(self):
+        self.user_input_column = int(input("enter no of columns: "))
+        self.user_input_row = int(input("enter no of rows: "))
+        self.column_values = []
+    def function(self):
+
+        for i in range(0,self.user_input_column):
+            user_input_column_names=input("enter column identifier "+str(i + 1))
+            self.column_values.append(user_input_column_names)
+
+        self.dataframe_list=[]
+    #user_input_row = int(input("enter no of rows: "))
+    #user_input_column = int(input("enter no of columns: "))
+        for i in range(0,self.user_input_row):
+            self.row_list=[]
+            for j in range(0,self.user_input_column):
+                values_input=input("enter column: "+str(i+1)+'{}'.format(self.column_values[j]))
+                self.row_list.append(values_input)
+            self.dataframe_list.append(self.row_list)
+
+        print(self.dataframe_list)
+
+        df=pd.DataFrame(self.dataframe_list,columns=self.column_values)
+        print(df)
+Panda().function()  '''
+
+#assignment2
+data1={
+    "Names":["pavan","rakesh","naresh"],
+    "Qualification":["btech","mtech","msc"],
+    "sports":["cricket","volleyvall","football"]
+    }
+
+df1=pd.DataFrame(data1)
+#print((df1))
+
+data2={
+    "Names":["dhoni","kohli","rohit","bhuvi"],
+    "Qualification":["ssc","degree","pg","inter"],
+    "address":["indore","gurgoan","mumbai","delhi"],
+    "meritual status":["married","married","single","married"]
+    }
+
+df2=pd.DataFrame(data2)
+
+data3={
+    "Names":["sai"],
+    "Qualification":["pg"],
+    "salary":[50000]
+    }
+df3=pd.DataFrame(data3)
+#df3=df3.reset_index(drop=True)
+df4=pd.concat([df1,df2,df3])
+df4=df4.reset_index(drop=True)
+df4=df4.fillna(0)
+df4.to_excel("list_of_players.xlsx")
+df4.to_csv("players.csv")
+print(df4)
